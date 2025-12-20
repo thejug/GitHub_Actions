@@ -1,0 +1,13 @@
+name: Self Hosted Runner
+
+on:
+   workflow_dispatch:
+
+jobs:
+  self-hosted-demo:
+    runs-on: self-hosted
+    steps:
+    - name: Run Echo Statements
+    run: |
+          echo XYZ
+          echo ABC
