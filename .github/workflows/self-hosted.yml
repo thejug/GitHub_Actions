@@ -6,7 +6,7 @@ on:
 
 jobs:
   self-hosted-demo:
-    runs-on: [self-hosted, non-prod]
+    runs-on: self-hosted
     steps:
     - name: Run Echo Statements
       run: |
