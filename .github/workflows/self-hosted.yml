@@ -1,5 +1,5 @@
 # This is a first self-hosted workflow
-name: SELF_HOSTED_RUNNER_WF
+#name: SELF_HOSTED_RUNNER_WF
 
 on:
    workflow_dispatch:
