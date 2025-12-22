@@ -1,5 +1,6 @@
 # This is a first self-hosted workflow
-#name: SELF_HOSTED_RUNNER_WF
+name: SELF_HOSTED_RUNNER_WF
+run-name: SELF_HOSTED_RUNNER_WF by @${{ github.actor }}
 
 on:
    workflow_dispatch:
