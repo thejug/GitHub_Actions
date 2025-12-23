@@ -1,6 +1,6 @@
 # This is a first self-hosted workflow
-name: SELF_HOSTED_RUNNER_WF
-run-name: SELF_HOSTED_RUNNER_WF by ${{ github.actor }}
+name: SELF_HOSTED_RUNNER_WF_UPDATED
+run-name: SELF_HOSTED_RUNNER_WF_UPDATED by ${{ github.actor }}
 
 on:
    workflow_dispatch:
@@ -8,6 +8,10 @@ on:
 env:
    PIPE: cicd
 jobs:
+  report-url:
+     runs-on: self-hosted
+     steps:
+        - run: echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
   self-hosted-demo:
      runs-on: self-hosted
      env:
@@ -23,8 +27,7 @@ jobs:
             #echo $PIPE
             #echo $GITHUB_TOKEN
 
-report-url:
-      runs-on: self-hosted
-      steps:
-         - run: echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+      
+      
+         
          
