@@ -4,12 +4,19 @@ run-name: SELF_HOSTED_RUNNER_WF by @${{ github.actor }}
 
 on:
    workflow_dispatch:
-
+# Env setting at WF level
+env:
+   PIPE: cicd
 jobs:
   self-hosted-demo:
     runs-on: self-hosted
     steps:
     - name: Run Echo Statements
-      run: |
-          echo XYZ
-          echo ABC
+    # Env setting at STEP level
+    env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    run: |
+         echo XYZ
+         echo ABC
+         echo $PIPE
+         echo $GITHUB_TOKEN
