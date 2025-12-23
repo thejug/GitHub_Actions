@@ -13,7 +13,7 @@ jobs:
      steps:
         - name: check-os
           if: runner.os == 'Windows'
-          run: echo "The runner's OS is $env:RUNNER_OS
+          run: echo "The runner's OS is $env:RUNNER_OS"
         - run: echo $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
         - run: echo $env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID
         - run: echo ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
