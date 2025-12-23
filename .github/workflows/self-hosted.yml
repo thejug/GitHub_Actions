@@ -1,6 +1,6 @@
 # This is a first self-hosted workflow
 name: SELF_HOSTED_RUNNER_WF
-run-name: SELF_HOSTED_RUNNER_WF by @${{ github.actor }}
+run-name: SELF_HOSTED_RUNNER_WF by ${{ github.actor }}
 
 on:
    workflow_dispatch:
@@ -9,14 +9,14 @@ env:
    PIPE: cicd
 jobs:
   self-hosted-demo:
-    runs-on: self-hosted
-    steps:
-    - name: Run Echo Statements
-    # Env setting at STEP level
-    env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    run: |
-         echo XYZ
-         echo ABC
-         echo $PIPE
-         echo $GITHUB_TOKEN
+     runs-on: self-hosted
+     steps:
+       - name: Run Echo Statements
+       # Env setting at STEP level
+         env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         run: |
+            echo XYZ
+            echo ABC
+            echo $PIPE
+            echo $GITHUB_TOKEN
