@@ -10,6 +10,8 @@ env:
 jobs:
   self-hosted-demo:
      runs-on: self-hosted
+     env:
+        STAGE: dev
      steps:
        - name: Run Echo Statements
        # Env setting at STEP level
@@ -18,5 +20,5 @@ jobs:
          run: |
             echo XYZ
             echo ABC
-            echo $PIPE
-            echo $GITHUB_TOKEN
+            #echo $PIPE
+            #echo $GITHUB_TOKEN
