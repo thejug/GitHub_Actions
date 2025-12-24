@@ -1,16 +1,28 @@
-name: Verify file
+name: Deployment example
 
 on:
   push:
-  pull_request:
+    branches: [ "main", "dev" ]
 
 jobs:
-  verify:
-    name: ${{ vars.JOB_NAME }}
-    if: ${{ vars.EXEC_WF == 'true' }}
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: self-hosted
+    steps:
+    - name: Build and test
+      run: |
+        echo Building...
+        echo Testing...
+
+  deploy-prod:
+    needs: [build-and-test]
+    if: github.ref == 'refs/heads/main'
+
+    runs-on: self-hosted
+    environment:
+       name: production
+       url: https://github.com/${{ GitHub.repository }}/releases/tag/v${{ vars.PROD_VERSION }}
 
     steps:
-      - uses: actions/checkout@v3
-      - run: |
-          [[ -f ${{ vars.FILE_TO_CHECK }} ]] || (echo "${{ vars.FILE_TO_CHECK }} file needs to be added to ${{ GitHub.repository }} !" && exit 1 )
+      - name: Deploy script
+        run:
+          mv C:\Users\theju\x.txt C:\Users\theju\y.txt
