@@ -4,25 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  changelog:
+  #Job 1
+  build:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      # Step 2: Run conventional-changelog-action
-      - name: Generate changelog
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.14.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-file: CHANGELOG.md
-          git-message: "chore(release): {version}"
-
-      # Step 3: Capture and use outputs
-      - name: Show captured outputs
+      # Step 1: Build the script
+      - name: step-1 Build Hello World!
         run: |
-          echo "Version: ${{ steps.changelog.outputs.version }}"
-          echo "Tag: ${{ steps.changelog.outputs.tag }}"
-          echo "Changelog: ${{ steps.changelog.outputs.changelog }}"
+          echo "Hello World" >/tmp/hello_world.txt
+     
+      # Step 2: Upload Artifact
+      - name: step-2 Upload Artifact - hello_world.txt
+        uses: actions/upload-artifact@v6
+        with:
+          name: hello_world.txt
+          path: /tmp
+  #job 2
+  test-build:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Step 1: Download Artifact
+      - name: step-1 Download Artifact - hello_world.txt
+        uses: actions/download-artifact@v2
+        with:
+          name: hello_world.txt
