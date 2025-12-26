@@ -28,4 +28,4 @@ jobs:
       - name: step-1 Download Artifact - hello_world.txt
         uses: actions/download-artifact@v7
         with:
-          name: /tmp/hello_world.txt
+          name: hello_world.txt
