@@ -1,28 +1,38 @@
-name: Deployment example
-
 on:
-  push:
-    branches: [ "main", "dev" ]
+  # Allows you to run this WF from another WF
+
+  workflow_Call:
+    inputs:
+      title:
+        required: true
+        type: string
+    body:
+      required: true
+      type: string
+
+  # Allows you to call this manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      title:
+        description: 'Issue title'
+        required: true
+      body:
+        description: 'Issue body'
+        required: true
 
 jobs:
-  build-and-test:
-    runs-on: self-hosted
+  create_instance_on_failure:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-    - name: Build and test
-      run: |
-        echo Building...
-        echo Testing...
-
-  deploy-prod:
-    needs: [build-and-test]
-    if: github.ref == 'refs/heads/main'
-
-    runs-on: self-hosted
-    environment:
-       name: production
-       url: https://github.com/${{ GitHub.repository }}/releases/tag/v${{ vars.PROD_VERSION }}
-
-    steps:
-      - name: Deploy script
-        run:
-          mv C:\Users\theju\x.txt C:\Users\theju\y.txt
+      - name: Create issue using REST API
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ GitHub.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --data '{
+            "title": "Failure: ${{ inputs.title }}",
+            "body": "Details: ${{ inputs.body }}"
+            }' \
+          --fail
