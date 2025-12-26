@@ -26,6 +26,6 @@ jobs:
     steps:
       # Step 1: Download Artifact
       - name: step-1 Download Artifact - hello_world.txt
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v7
         with:
           name: /tmp/hello_world.txt
