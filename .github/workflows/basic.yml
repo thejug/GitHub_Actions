@@ -13,4 +13,4 @@ jobs:
 
 
       - name: Get stage
-        run: echo "The build stage is $env:{{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
+        run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
