@@ -19,4 +19,5 @@ jobs:
     needs: setup  
     steps:
       - name: Get stage
-        run: echo "The build stage is ${{ needs.setup.outputs.build-stage }}"
+        run: |
+          echo "The build stage is ${{ needs.setup.outputs.build-stage }}"
