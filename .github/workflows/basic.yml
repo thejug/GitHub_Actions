@@ -11,8 +11,7 @@ jobs:
     steps:
       - name: Set debug
         id: set-debug-state
-        run: |
-          "BUILD_STAGE=debug" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
 
 
   report:
