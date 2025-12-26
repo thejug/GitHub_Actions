@@ -1,16 +1,17 @@
-name: Capturing output from a step
+name: CAPTURING OUTPUT FROM A STEP
 
 on:
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Set debug
         id: set-debug-state
-        run: echo "BUILD_STAGE=debug" >> $env:GITHUB_OUTPUT
-
+        run: |
+          "BUILD_STAGE=debug" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
       - name: Get stage
-        run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
+        run: |
+          echo "The build stage is ${{ steps.set-debug-state.outputs.BUILD_STAGE }}"
