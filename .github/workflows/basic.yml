@@ -1,24 +1,28 @@
-name: CAPTURING OUTPUT FROM A JOB
+name: CAPTURE_OUTPUT_FROM_CHANGELOG_ACTION
 
 on:
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-  setup:
+  changelog:
     runs-on: ubuntu-latest
-    outputs:
-      build-stage: ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
     steps:
-      - name: Set debug
-        id: set-debug-state
-        run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
+      # Step 1: Checkout repository
+      - name: Checkout
+        uses: actions/checkout@v3
 
+      # Step 2: Run conventional-changelog-action
+      - name: Generate changelog
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3.14.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          output-file: CHANGELOG.md
+          git-message: "chore(release): {version}"
 
-  report:
-    runs-on: ubuntu-latest
-    needs: setup  
-    steps:
-      - name: Get stage
-        env:
-          BUILD_STAGE: ${{ needs.setup.outputs.build-stage }}
-        run: echo "The build stage is $BUILD_STAGE"
+      # Step 3: Capture and use outputs
+      - name: Show captured outputs
+        run: |
+          echo "Version: ${{ steps.changelog.outputs.version }}"
+          echo "Tag: ${{ steps.changelog.outputs.tag }}"
+          echo "Changelog: ${{ steps.changelog.outputs.changelog }}"
