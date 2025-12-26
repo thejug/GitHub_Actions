@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Set debug
         id: set-debug-state
-        run: echo "BUILD_STAGE=debug" >> $GITHUB_OUTPUT
+        run: echo "BUILD_STAGE=debug" >> $env:GITHUB_OUTPUT
 
 
       - name: Get stage
-        run: echo "The build stage is ${{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
+        run: echo "The build stage is $env:{{ steps.set-debug-stage.outputs.BUILD_STAGE }}"
