@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: hello_world.txt
-          path: /tmp
+          path: /tmp/hello_world.txt
   #job 2
   test-build:
     runs-on: ubuntu-latest
@@ -28,4 +28,4 @@ jobs:
       - name: step-1 Download Artifact - hello_world.txt
         uses: actions/download-artifact@v2
         with:
-          name: hello_world.txt
+          name: /tmp/hello_world.txt
