@@ -25,3 +25,4 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ runner.os }}-build-${{ runner.os }}
+          fail-on-cache-miss: true
