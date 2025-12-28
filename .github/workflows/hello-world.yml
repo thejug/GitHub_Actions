@@ -1,0 +1,27 @@
+name: C Simple Cache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore build cache
+        uses: actions/cache@v4
+        with:
+          path: build
+          key: c-build-${{ runner.os }}-${{ hashFiles('**/*.c') }}
+          restore-keys: |
+            c-build-${{ runner.os }}-
+
+      - name: Build C program
+        run: |
+          mkdir -p build
+          gcc hello-world.c -o build/hello-world
+
+      - name: Run program
+        run: ./build/hello-world
