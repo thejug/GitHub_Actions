@@ -1,0 +1,23 @@
+name: Python Setup Cache Example
+
+on:
+  workflow_dispatch:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python with cache
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        run: python simple-python-script.py
