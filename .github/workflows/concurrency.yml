@@ -1,0 +1,15 @@
+name: CONCURRENCY
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.head_ref }} || ${{ github.ref }}
+
+jobs:
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print message
+        run: |
+          echo "Message from CONCURRENCY WF"
