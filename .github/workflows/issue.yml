@@ -1,0 +1,11 @@
+on:
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+  notify-for-issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "An issue was opened/edited/closed"
+  
