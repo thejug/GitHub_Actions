@@ -1,0 +1,10 @@
+name: caller-workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call_reusable:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      message: "Hello from the caller workflow"
