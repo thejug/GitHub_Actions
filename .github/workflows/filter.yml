@@ -14,6 +14,5 @@ on:
 jobs:
   notify-for-filters:
     runs-on: ubuntu-latest
-
     steps:
       - run: echo "Triggered passing all filters ..."
