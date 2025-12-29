@@ -1,0 +1,25 @@
+name: USE_FILTERS_TO_REFINE_TRIGGERS
+
+on:
+  push:
+    branches:
+      - 'main/**'
+      - '!main/**-fix'
+    branches-ignore:
+      - 'prod/*'
+    tags:
+      - '*PROD'
+    tags-ignore:
+      - 'rc*'
+    paths:
+      - '**.c'
+      - '!*/docs/**'
+    paths-ignore:
+      - 'data/**'
+     
+jobs:
+  notify-for-filters:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Triggered passing all filters ..."
