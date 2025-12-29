@@ -3,6 +3,7 @@ name: USE_FILTERS_TO_REFINE_TRIGGERS
 on:
   push:
     branches:
+      - 'main'
       - 'main/**'
       - '!main/**-fix'
     tags:
