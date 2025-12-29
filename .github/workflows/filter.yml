@@ -5,17 +5,11 @@ on:
     branches:
       - 'main/**'
       - '!main/**-fix'
-    branches-ignore:
-      - 'prod/*'
     tags:
       - '*PROD'
-    tags-ignore:
-      - 'rc*'
     paths:
       - '**.c'
       - '!*/docs/**'
-    paths-ignore:
-      - 'data/**'
      
 jobs:
   notify-for-filters:
