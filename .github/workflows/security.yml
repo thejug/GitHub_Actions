@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Security Vulnerability with the below command
-    # - run: echo ${{ github.event.head_commit.message }}
+      - name: Safe usage of commit message
+      # Security Vulnerability with the below command
+      # - run: echo ${{ github.event.head_commit.message }}
 
-    # Security Vulnerability with the below command - Fixed
-      - env:
+      # Security Vulnerability with the below command - Fixed
+        env:
           DATA_VALUE: ${{ github.event.head_commit.message }}
-      - run: echo $DATA_VALUE
+        run: |
+          echo $DATA_VALUE
