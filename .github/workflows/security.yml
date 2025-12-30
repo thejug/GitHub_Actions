@@ -1,0 +1,12 @@
+name: Security Vulnerability
+
+on:
+  push:
+  branches: [ "main" ]
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: echo ${{ GitHub.event.head_commit.message }}
