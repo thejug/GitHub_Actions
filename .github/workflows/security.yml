@@ -9,4 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo ${{ GitHub.event.head_commit.message }}
+    # Security Vulnerability with the below command
+    # - run: echo ${{ github.event.head_commit.message }}
+
+    # Security Vulnerability with the below command - Fixed
+      - env:
+          DATA_VALUE: ${{ github.event.head_commit.message }}
+      - run: echo $DATA_VALUE
