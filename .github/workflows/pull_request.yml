@@ -14,5 +14,5 @@ jobs:
 
       - name: Run tests
         run: |
-          echo "Running tests on pull request code."
+          echo "Running tests on pull request code - from fix-branch"
           cat hello-world.c
