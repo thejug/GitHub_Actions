@@ -38,3 +38,15 @@ jobs:
         run: |
           ./build/hello-world
           #echo "::error file=hello-world.yml,line=32,col=5,endColumn=8::This is an error message:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Unit Test - 1
+        run: |
+          echo "Running unit test - 1"
+
+      - name: Unit test - 2
+        run: |
+          echo "Running unit test - 2"
+      
