@@ -1,7 +1,7 @@
-name: PR Checks - pull_request
+name: PR Checks - pull_request_target
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [ "main" ]
 
 jobs:
