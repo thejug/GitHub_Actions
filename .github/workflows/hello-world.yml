@@ -38,7 +38,7 @@ jobs:
         run: |
           ./build/hello-world
           #echo "::error file=hello-world.yml,line=32,col=5,endColumn=8::This is an error message:
-
+          echo "Job-1 Completed" >> $GITHUB_STEP_SUMMARY
   test:
     runs-on: ubuntu-latest
     steps:
@@ -49,4 +49,9 @@ jobs:
       - name: Unit test - 2
         run: |
           echo "Running unit test - 2"
+          echo "Testing Summary Follows:" >> $GITHUB_STEP_SUMMARY
+          echo " | Test | Result | " >> $GITHUB_STEP_SUMMARY
+          echo " | ----:| ------:| " >> $GITHUB_STEP_SUMMARY
+          echo " | 1 | :white_check_mark: | " >> $GITHUB_STEP_SUMMARY
+          echo " | 2 | :no_entry_sign: | " >> $GITHUB_STEP_SUMMARY
       
