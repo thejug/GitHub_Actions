@@ -20,11 +20,13 @@ jobs:
 
       - name: Build C program
         env: 
-          USER_ID: "User 1234"
+          USER_ID: ${{ vars.FILE_TO_CHECK }}
         run: |
           echo "::group::Extended info ..."
           echo "::add-mask::$USER_ID"
           echo "USER_ID is $USER_ID"
+          echo "FILENAME: ${{ vars.FILE_TO_CHECK }}
+          echo "::add-mask::
           echo "::debug::This is a debug message"
           echo "::warning::This is a warning message"
           echo "::notice::This is a notice message"
