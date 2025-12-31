@@ -19,8 +19,11 @@ jobs:
             c-build-${{ runner.os }}-
 
       - name: Build C program
+        env: 
+          USER_ID: "User 1234"
         run: |
-          echo "::group::Extended info"
+          echo "::group::Extended info ..."
+          echo "::add-mask::$USER_ID"
           echo "::debug::This is a debug message"
           echo "::warning::This is a warning message"
           echo "::notice::This is a notice message"
@@ -31,4 +34,4 @@ jobs:
       - name: Run program
         run: |
           ./build/hello-world
-          echo "::error file=hello-world.yml,line=32,col=5,endColumn=8::This is an error message:
+          #echo "::error file=hello-world.yml,line=32,col=5,endColumn=8::This is an error message:
