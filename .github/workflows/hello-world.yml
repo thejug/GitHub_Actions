@@ -20,8 +20,13 @@ jobs:
 
       - name: Build C program
         run: |
+          echo "::debug::This is a debug message"
+          echo "::warning::This is a warning message"
+          echo "::notice::This is a notice message"
           mkdir -p build
           gcc hello-world.c -o build/hello-world
 
       - name: Run program
-        run: ./build/hello-world
+        run: |
+          ./build/hello-world
+          echo "::error::This is an error message:
