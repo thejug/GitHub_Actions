@@ -29,4 +29,4 @@ jobs:
       - name: Run program
         run: |
           ./build/hello-world
-          echo "::error::This is an error message:
+          echo "::error file=hello-world.yml,line=32,col=5,endColumn=8::This is an error message:
