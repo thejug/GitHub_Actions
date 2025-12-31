@@ -20,9 +20,11 @@ jobs:
 
       - name: Build C program
         run: |
+          echo "::group::Extended info"
           echo "::debug::This is a debug message"
           echo "::warning::This is a warning message"
           echo "::notice::This is a notice message"
+          echo "::endgroup::"
           mkdir -p build
           gcc hello-world.c -o build/hello-world
 
