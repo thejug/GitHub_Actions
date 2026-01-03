@@ -13,7 +13,7 @@ jobs:
       steps:
       - name: Invoke Custom Action
         id: report-count
-        uses: skillrepos/arg-count-action@main
+        uses: thejug/arg-count-action@main
         with: 
           arguments-to-count: ${{ github.event.inputs.myValues }}
             - run:|
