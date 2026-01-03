@@ -1,0 +1,20 @@
+name: Use Custom Action
+
+on:
+   workflow_dispatch:
+     inputs:
+       myValues:
+         description: 'Input Values'
+         required: true
+
+jobs:
+   count-args:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Invoke Custom Action
+        id: report-count
+        uses: thejug/arg-count-action@main
+        with: 
+          arguments-to-count: ${{ github.event.inputs.myValues }}
+            - run:|
+                echo Argument count is ${{ steps.report-count.outputs.arg-count }}
