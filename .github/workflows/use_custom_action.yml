@@ -16,5 +16,6 @@ jobs:
         uses: thejug/arg-count-action@main
         with: 
           arguments-to-count: ${{ github.event.inputs.myValues }}
-            - run:|
-                echo Argument count is ${{ steps.report-count.outputs.arg-count }}
+          
+      - name: Print argument count
+        run: echo "Argument count is ${{ steps.report-count.outputs.arg-count }}"
